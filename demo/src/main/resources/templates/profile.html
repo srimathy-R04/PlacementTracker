@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Placement Tracker Dashboard</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/profile.css}">
+</head>
+
+<body>
+<div class="profile-card">
+
+    <h2>👤 My Profile</h2>
+
+    <div class="profile-item">
+        <span>Username</span>
+        <span th:text="${user.username}"></span>
+    </div>
+    <div class="stats">
+
+        <div class="stat-box">
+            <span>📄 Total Applications</span>
+            <span th:text="${total}"></span>
+        </div>
+
+        <div class="stat-box">
+            <span>🎤 Interviews</span>
+            <span th:text="${interviews}"></span>
+        </div>
+
+        <div class="stat-box">
+            <span>🏆 Selected</span>
+            <span th:text="${selected}"></span>
+        </div>
+
+    </div>
+
+    <a href="/dashboard" class="edit-btn">Back to Dashboard</a>
+
+</div>
+
+</body>
+
+</html>

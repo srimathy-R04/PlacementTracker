@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Placement Tracker Dashboard</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/application-form.css}">
+</head>
+<body>
+<div class="container">
+    <h2 style="text-decoration: none;text-decoration-color: black;padding: 10px">Add Application</h2>
+<form th:action="@{/applications/save}"
+      th:object="${application}"
+      method="post">
+<input type="hidden" th:field="*{id}">
+    <input type="text"
+           th:field="*{companyName}"
+           placeholder="Company" >
+    <span th:if="${#fields.hasErrors('companyName')}"
+          th:errors="*{companyName}" ></span>
+
+    <input type="text"
+           th:field="*{role}"
+           placeholder="Role">
+    <span th:if="${#fields.hasErrors('role')}"
+          th:errors="*{role}"></span>
+    <input type="date" name="interviewDate">
+
+    <select th:field="*{status}">
+
+        <option value="">Select status</option>
+        <option value="APPLIED" > 🔵 Applied</option>
+
+        <option VALUE="SHORTLISTED" >🟡 Shortlisted</option>
+
+        <option VALUE="REJECTED">🔴 Rejected</option>
+
+
+        <option value="SELECTED" >🟢 Selected</option>
+    </select>
+
+    <input type="number"
+           name="packageLpa"
+           placeholder="Package LPA"
+           required>
+
+    <button type="submit">
+        Save Application
+    </button>
+
+
+</form>
+
+</div>
+<a href="/dashboard" class="edit-btn">Back to Dashboard</a>
+</body>
+
+</html>

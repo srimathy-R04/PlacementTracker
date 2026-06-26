@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Placement Tracker Dashboard</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/application-list.css}">
+</head>
+
+<div class="container">
+    <h2>Applications List</h2>
+
+    <table>
+    <tr>
+        <th>Company</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    <tr th:each="app : ${applications}">
+
+        <td th:text="${app.companyName}"></td>
+
+        <td th:text="${app.role}"></td>
+
+        <td th:text="${app.status}"></td>
+
+        <td>
+            <a th:href="@{/applications/delete/{id}(id=${app.id})}" style="text-decoration: none" >
+                Delete
+            </a>
+                |
+            <a th:href="@{/applications/edit/{id}(id=${app.id})}" style="text-decoration: none" >
+                Edit
+            </a>
+        </td>
+
+    </tr>
+        <a href="/applications/add" class="add-btn" style="text-decoration: none;text-decoration-color: black; text-align: center">
+            Add Application
+        </a>
+
+
+</table>
+
+    <div class="header-section">
+        <h2>Applications List</h2>
+
+        <a href="/export/csv" class="export-btn">
+            📄 Export CSV
+        </a>
+    </div>
+    <a href="/dashboard" class="edit-btn">Back to Dashboard</a>
+</div>
+
+</html>

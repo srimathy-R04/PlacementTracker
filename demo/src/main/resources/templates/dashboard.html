@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Placement Tracker Dashboard</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/dashboard.css}">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <h2>Placement Tracker</h2>
+
+    <ul>
+        <li class="active">🏫 Dashboard</li>
+       <a href="/search-page" style="text-decoration:none;color: #f4f6f9"> <li>🔎 Search Companies</li></a>
+       <a href="/applications" style="text-decoration:none;color: #f4f6f9"><li> 📄 Applications</li></a>
+        <a href="/profile"  style="text-decoration:none;color: #f4f6f9">  <li>👤 Profile</li></a>
+        <a href="/logout"  style="text-decoration:none;color: #f4f6f9"><li>🚪 Logout</li></a>
+    </ul>
+
+</div>
+
+<div class="main-content">
+
+    <div class="topbar">
+        <h1>Welcome <span th:text="${username}"></span> 👋</h1>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>📄 Total Application</h2>
+            <p th:text="${totalApplications}">0</p>
+        </div>
+
+        <div class="card">
+            <h2>🎤 Interviews</h2>
+            <p th:text="${interviews}">0</p>
+        </div>
+
+        <div class="card">
+            <h2>🏆 Selected</h2>
+            <p th:text="${selected}">0</p>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="form-section">
+
+        <h2>Add Company</h2>
+
+        <form action="/addCompany"
+              method="post">
+
+            <input type="text"
+                   name="companyName"
+                   placeholder="Company Name"
+                   required>
+
+            <input type="text"
+                   name="role"
+                   placeholder="Job Role"
+                   required>
+
+
+            <select name="status">
+                <option value="">Select status</option>
+                <option value="APPLIED" > 🔵 Applied</option>
+
+                <option VALUE="SHORTLISTED" >🟡 Shortlisted</option>
+
+                <option VALUE="REJECTED">🔴 Rejected</option>
+
+
+                <option value="SELECTED" >🟢 Selected</option>
+            </select>
+
+
+            <input type="number"
+                   name="packageLpa"
+                   placeholder="Package LPA"
+                   required>
+
+            <button type="submit">
+                Add Company
+            </button>
+
+        </form>
+        <div th:if="${session.success}" class="success-message">
+            <span th:text="${session.success}"></span>
+        </div>
+    </div>
+    <br>
+
+</div>
+
+
+</body>
+
+</html>
